@@ -1,0 +1,80 @@
+.add_card{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: #f8f8f8;
+}
+
+.add_card_btn{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+    color: black;
+    font-size: 14px;
+    transition: 200ms;
+    cursor: pointer;
+    border: 1px solid #1379ec;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.add_card_btn:hover{
+    font-weight: bold;
+    background-color: lightskyblue;
+    color: rgb(88, 87, 87);
+    border: none;
+    outline: none;
+}
+
+.add_card_heading{
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.add_card input{
+    border-radius: 7px;
+    padding: 5px;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #1379ec;
+    width: 100%;
+}
+
+.add_card_footer{
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    gap: 10px;
+    margin: 7px;
+}
+
+.add_card_footer button{
+    padding: 7px;
+    font-weight: 300;
+    background-color: #1379ec;
+    color: white;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.add_card_footer button:hover{
+    background-color: #073b77;
+    color: white;
+}
+
+.add_card_footer svg{
+    cursor: pointer;
+}
+
+.add_card_btn svg{
+    height: 16px;
+    width: 16px;
+}
