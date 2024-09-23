@@ -45,3 +45,27 @@
     overflow-y: auto;
     height: 100vh;
 }
+
+.board_top_more{
+    position: relative;
+    cursor: pointer;
+}
+
+.board_dropdown{
+    min-width: 130px;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 10px;
+    justify-content: left;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.board_dropdown p{
+    cursor: pointer;
+    /* border-bottom: 1px solid #ccc; */
+    text-align: left;
+    margin-bottom: 3px;
+    font-size: 15px;
+}

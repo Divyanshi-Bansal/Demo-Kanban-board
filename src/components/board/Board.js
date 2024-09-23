@@ -1,25 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Board.css';
 import Card from '../card/Card';
 import {MoreHorizontal} from 'react-feather';
 import AddCard from '../card/AddCard';
+import Dropdown from '../dropdown/Dropdown';
 
-const Board = () => {
+const Board = (props) => {
+
+  const [showTopMoreDropdown, setShowTopMoreDropdown] = useState(false);
+  useEffect(()=>{
+    console.log(showTopMoreDropdown);
+  });
+
+  const handleDeleteBoardFunc = () =>{
+    let tempList = [...props.boardData];
+
+    const boardIndex = tempList.findIndex((board) => board.id === props.board.id);
+    if(boardIndex < 0) return;
+
+    tempList.splice(boardIndex,1);
+    props.setBoardData(tempList);
+    
+  }
+
   return (
     <div className='board'>
       <div className='board_top'>
-        <p className='board_top_title'>board title</p>
-        <span className='board_top_count'>2</span> 
-        <MoreHorizontal/>
+        <p className='board_top_title'>{props.board ? props.board.title : "Board Title"}</p>
+        <span className='board_top_count'>{props.board ? props.board.cards.length : 0}</span> 
+        <div className='board_top_more' onClick={(e)=>{
+          e.stopPropagation();
+          setShowTopMoreDropdown(true);
+          }}>
+          <MoreHorizontal/>
+          {showTopMoreDropdown && 
+            <Dropdown onCloseFunc={() =>{
+              setShowTopMoreDropdown(false);
+            }}>
+              <div className='board_dropdown'>
+                <p onClick={()=>handleDeleteBoardFunc()}>Delete board</p>
+              </div>
+          </Dropdown> 
+          } 
+        </div>
       </div>
       <div className='board_cards custom-scroll'>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-        <AddCard/>
+        {
+          props.board?.cards &&  props.board.cards.map((card) => {
+            return(
+              <Card key={card.id} card={card} boardId={props.board.id} setBoardData={props.setBoardData} boardData={props.boardData}/>
+            )
+          })
+        }
+        <AddCard boardId={props.board.id} setBoardData={props.setBoardData} boardData={props.boardData}/>
       </div>
     </div>
   )
