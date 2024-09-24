@@ -23,6 +23,16 @@ const Board = (props) => {
     
   }
 
+  const DummyEmptyCard = {
+    id:"dummyCard",
+    text:"",
+    tasks:[],
+    title:"",
+    labels:[],
+    description:"",
+    date:""
+  }
+
   return (
     <div className='board'>
       <div className='board_top'>
@@ -46,11 +56,27 @@ const Board = (props) => {
       </div>
       <div className='board_cards custom-scroll'>
         {
-          props.board?.cards &&  props.board.cards.map((card) => {
+          props.board?.cards?.length>0 ?  props.board.cards.map((card) => {
             return(
-              <Card key={card.id} card={card} boardId={props.board.id} setBoardData={props.setBoardData} boardData={props.boardData}/>
+              <Card 
+                key={card.id} 
+                card={card} 
+                boardId={props.board.id} 
+                setBoardData={props.setBoardData} 
+                boardData={props.boardData}
+                handleDragEnd={props.handleDragEnd}
+                handleDragEnter={props.handleDragEnter}
+              />
             )
-          })
+          }) : 
+          <Card 
+            key="emptyCard" 
+            boardId={props.board.id} 
+            handleDragEnd={props.handleDragEnd}
+            handleDragEnter={props.handleDragEnter}
+            setBoardData={props.setBoardData} 
+            boardData={props.boardData}
+          />
         }
         <AddCard boardId={props.board.id} setBoardData={props.setBoardData} boardData={props.boardData}/>
       </div>

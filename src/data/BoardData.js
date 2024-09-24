@@ -2,11 +2,11 @@ import React from 'react'
 
 const BoardData = [
     {
-        id:new Date() + Math.random()*2,
+        id:"Board1",
         title:"To Do",
         cards:[
             {
-                id:new Date() + Math.random(),
+                id: "card1",
                 title:"Card 1",  
                 tasks:[],
                 labels:[
@@ -23,7 +23,7 @@ const BoardData = [
                 date:""
             },
             {
-                id:new Date() + Math.random(),
+                id:"card2",
                 title:"Card 2",  
                 tasks:[],
                 labels:[
@@ -36,7 +36,7 @@ const BoardData = [
                 date:"30/06"
             },
             {
-                id:new Date() + Math.random(),
+                id:"card4",
                 title:"Card 4",  
                 tasks:[],
                 labels:[
@@ -55,11 +55,11 @@ const BoardData = [
         ]
     },
     {
-        id:new Date() + Math.random()*2,
+        id:"board2",
         title:"In Progress",
         cards:[
             {
-                id:new Date() + Math.random(),
+                id:"card3",
                 title:"Card 3",  
                 tasks:[],
                 labels:[
@@ -78,11 +78,11 @@ const BoardData = [
         ]
     },
     {
-        id:new Date() + Math.random()*2,
+        id:"board3",
         title:"In Review",
         cards:[
             {
-                id:new Date() + Math.random(),
+                id:"card5",
                 title:"Card 5",  
                 tasks:[],
                 labels:[

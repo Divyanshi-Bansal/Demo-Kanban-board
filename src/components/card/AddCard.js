@@ -11,18 +11,18 @@ const AddCard = (props) => {
     const handleAddCardInBoard = (event) =>{
         event.stopPropagation();
         let tempBoardList = [...props.boardData];
+    
+        const boardIndex = tempBoardList.findIndex((board) => board.id === props.boardId);
+        if(boardIndex < 0) return;
 
         const card = {
-            id:new Date() + Math.random,
+            id:`card${tempBoardList[boardIndex].cards.length+1}${boardIndex}`,
             title:cardTitle,
             lables:[],
             tasks:[],
             description:"",
             date:""
         }
-    
-        const boardIndex = tempBoardList.findIndex((board) => board.id === props.boardId);
-        if(boardIndex < 0) return;
 
         tempBoardList[boardIndex].cards.push(card);
         props.setBoardData(tempBoardList);

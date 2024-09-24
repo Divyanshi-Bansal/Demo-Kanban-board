@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Plus, X } from 'react-feather';
 import './AddBoard.css';
-import { addBoard } from '../../service/BoardService';
 
 const AddBoard = (props) => {
     const [showAdd, setShowAdd] = useState(false);
@@ -15,7 +14,7 @@ const AddBoard = (props) => {
         if(board) return;
 
         const boardNew = {
-            id:new Date() + Math.random()*2,
+            id:`board${tempList.length+1}`,
             title:boardTitle,
             cards:[]
         }
