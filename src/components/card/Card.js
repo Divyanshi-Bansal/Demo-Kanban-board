@@ -3,10 +3,13 @@ import './Card.css';
 import { CheckSquare, Clock, MoreHorizontal } from 'react-feather';
 import Chip from '../chip/Chip';
 import Dropdown from '../dropdown/Dropdown';
+import Modal from '../modal/Modal';
+import CardInfo from './cardInfo/CardInfo';
 
 const Card = (props) => {
 
   const [showCardDropdown, setShowCardDropdown] = useState(false);
+  const [showCardInfoModal, setShowCardInfoModal] = useState(false);
 
   const handleDeleteCardFunc = () =>{
     let tempList = [...props.boardData];
@@ -22,10 +25,32 @@ const Card = (props) => {
     
   }
 
+  const submitFunc = () =>{
+    // logic to show card info
+  }
+
+  const cancelFunc = ()=>{
+    // logic to cancel modal
+    setShowCardInfoModal(false);
+  }
+
   return (
+    <>
+    {
+      showCardInfoModal && props.card &&
+      <Modal title={props.card?.title}
+      primaryBtnText="submit"
+      secondaryBtnText="cancel"
+      submitFunc={submitFunc}
+      cancelFunc={cancelFunc}
+        >
+        <CardInfo card={props.card}/>
+      </Modal>
+    }
     <div className='card' draggable 
         onDragEnd={()=>props.handleDragEnd(props.card ? props.card.id : -1, props.boardId)}
         onDragEnter={()=>props.handleDragEnter(props.card?.id, props.boardId)}
+        onClick={()=>setShowCardInfoModal(true)}
         >
           {
             props.card ? 
@@ -79,6 +104,7 @@ const Card = (props) => {
           }
     
     </div>
+    </>
   )
 }
 
